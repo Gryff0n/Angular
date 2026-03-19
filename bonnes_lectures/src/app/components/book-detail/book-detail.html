@@ -1,0 +1,26 @@
+@if (book) {
+  <mat-card style="max-width: 600px; margin: 20px auto">
+    <mat-card-header>
+      <mat-card-title>{{ book.title }}</mat-card-title>
+      <mat-card-subtitle>{{ book.publisher }} — {{ book.year | date:'yyyy' }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p><strong>ISBN :</strong> {{ book.isbn }}</p>
+      <p><strong>4e de couverture :</strong></p>
+      <p>{{ book.backcover }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <a mat-raised-button color="accent" [routerLink]="['/books', book.id, 'edit']">
+        <mat-icon>edit</mat-icon> Modifier
+      </a>
+      <button mat-raised-button color="warn" (click)="delete()">
+        <mat-icon>delete</mat-icon> Supprimer
+      </button>
+      <a mat-button routerLink="/books">
+        <mat-icon>arrow_back</mat-icon> Retour
+      </a>
+    </mat-card-actions>
+  </mat-card>
+} @else {
+  <p>Chargement...</p>
+}

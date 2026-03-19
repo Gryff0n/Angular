@@ -1,0 +1,44 @@
+<mat-card style="max-width: 600px; margin: 20px auto">
+  <mat-card-header>
+    <mat-card-title>{{ isEdit ? 'Modifier le livre' : 'Ajouter un livre' }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form (ngSubmit)="submit()" style="display: flex; flex-direction: column; gap: 16px; margin-top: 16px">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Titre</mat-label>
+        <input matInput [(ngModel)]="book.title" name="title" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Éditeur</mat-label>
+        <input matInput [(ngModel)]="book.publisher" name="publisher" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Année</mat-label>
+        <input matInput [(ngModel)]="book.year" name="year" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>ISBN</mat-label>
+        <input matInput [(ngModel)]="book.isbn" name="isbn" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>4e de couverture</mat-label>
+        <textarea matInput [(ngModel)]="book.backcover" name="backcover" rows="5" required></textarea>
+      </mat-form-field>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit">
+          <mat-icon>save</mat-icon> {{ isEdit ? 'Modifier' : 'Ajouter' }}
+        </button>
+        <a mat-button routerLink="/books">
+          <mat-icon>cancel</mat-icon> Annuler
+        </a>
+      </mat-card-actions>
+
+    </form>
+  </mat-card-content>
+</mat-card>

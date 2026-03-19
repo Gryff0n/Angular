@@ -1,0 +1,30 @@
+<h2>Liste des livres</h2>
+
+<a mat-raised-button color="primary" routerLink="/books/new" style="margin-bottom: 16px">
+  + Ajouter un livre
+</a>
+
+<div style="display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px">
+  @for (book of books; track book.id) {
+    <mat-card style="width: 280px">
+      <mat-card-header>
+        <mat-card-title>{{ book.title }}</mat-card-title>
+        <mat-card-subtitle>{{ book.publisher }} — {{ book.year | date:'yyyy' }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>ISBN : {{ book.isbn }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a mat-button color="primary" [routerLink]="['/books', book.id]">
+          <mat-icon>visibility</mat-icon> Voir
+        </a>
+        <a mat-button color="accent" [routerLink]="['/books', book.id, 'edit']">
+          <mat-icon>edit</mat-icon> Modifier
+        </a>
+        <button mat-button color="warn" (click)="delete(book.id!)">
+          <mat-icon>delete</mat-icon> Supprimer
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  }
+</div>
